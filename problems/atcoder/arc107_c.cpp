@@ -152,15 +152,15 @@ template<class T> struct BiCoef {
 const int mod=998244353;
 const int nmax=55;
 using mint=Fp<mod>;
-BiCoef<mint> bc;
-
+BiCoef<mint> bc(nmax);
 int n,k;
-int a[nmax][nmax];
+ll a[nmax][nmax];
 bool ok;
+mint ans1,ans2;
 
 mint solve(){
   UnionFind u(n);
-  rep(i,0,n-1){
+  rep(i,0,n){
   	rep(j,i+1,n){
   		ok=true;
   		rep(m,0,n){
@@ -169,11 +169,11 @@ mint solve(){
   		if(ok)u.merge(i,j);
   	}
   }
-  min ans=1;
+  mint ans=1;
   //get groups
-	rep(i,0,n){
+  rep(i,0,n){
     if(u.root(i)==i)ans*=bc.fact(u.size(i));
-	}
+  }
   return ans;
 }
 
@@ -181,9 +181,17 @@ int main(void){
   fastio;
   cin>>n>>k;
   rep(i,0,n){
-  rep(j,0,n){
-  cin>>a[i][j];
+    rep(j,0,n){
+      cin>>a[i][j];
+    }
   }
+  ans1=solve();
+  rep(i,0,n){
+    rep(j,i+1,n){
+      swap(a[i][j],a[j][i]);
+    }
   }
+  ans2=solve();
+  cout<<ans1*ans2<<endl;
   return 0;
 }
