@@ -12,10 +12,31 @@
 typedef long long ll;
 using namespace std;
 
-const ll mod=1e9+7;
-const int nmax=2e5;
+int n,k,id;
+deque<int> q;
 
-int main(){
+void solve(){
+  for(auto j:q){
+    if(j==id)return; 
+  }
+  if(q.size()==k){
+    q.pop_back();
+  }
+  q.push_front(id);
+}
+
+int main(void){
   fastio;
+  cin>>n>>k;
+  rep(i,0,n){
+    cin>>id;
+    solve(); 
+  }
+  cout<<q.size()<<endl;
+  while (!q.empty()){
+    cout<<q.front()<<" ";
+    q.pop_front();
+  }
+  cout<<endl;
   return 0;
 }
