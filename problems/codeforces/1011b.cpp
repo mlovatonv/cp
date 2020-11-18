@@ -13,9 +13,28 @@ using namespace std;
 typedef long long ll;
 
 const ll mod=1e9+7;
-const int nmax=2e5;
+const int nmax=102;
+
+int n,m,ans;
+int cnt[nmax];
 
 int main(){
   fastio;
+  cin>>n>>m;
+  rep(i,0,m){
+    int a;
+    cin>>a;
+    ++cnt[a];
+  }
+  rep(i,1,101){
+    int acc=0;
+    rep(j,0,101){
+      acc+=cnt[j]/i;
+    }
+    if(acc>=n){
+      ans=max(ans,i); 
+    }
+  }
+  cout<<ans<<endl;
   return 0;
 }

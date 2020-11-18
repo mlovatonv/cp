@@ -1,5 +1,7 @@
-4
-add hack
-add hackerrank
-find hac
-find hak
+7 5
+acababa
+a
+bb
+caba
+aba
+karp
