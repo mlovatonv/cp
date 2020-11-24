@@ -7,17 +7,29 @@
 #define pb push_back
 #define elif else if
 #define rep(i,s,e) for(int i=s;i<e;++i)
-#define ret(i,c) for(auto i:c)
 #define all(a) a.begin(),a.end()
 #define len(a) (a.size())
 using namespace std;
 typedef long long ll;
-typedef vector<int> vi;
+typedef vector<pair<int,int>> vi;
 
 const ll mod=1e9+7;
-const int nmax=2e5;
+const int nmax=1e4+5;
+
+int n,m;
+vi adj[nmax];
 
 int main(){
   fastio;
+  cin>>n>>m;
+  rep(i,0,m){
+    int a,b,l;
+    cin>>a>>b>>l;
+    if(adj[a].fi==0){
+      adj[a].pb(k 
+    }else{
+        
+    }
+  }
   return 0;
 }

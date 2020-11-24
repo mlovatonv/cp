@@ -17,7 +17,27 @@ typedef vector<int> vi;
 const ll mod=1e9+7;
 const int nmax=2e5;
 
+int t,n;
+string s1,s2;
+
+void solve(){
+  cin>>s1>>s2;
+  n=len(s1);
+  unordered_map<int,bool> m;
+  int ans=0;
+  int prev=-1;
+  rep(i,0,n){
+    if(s1[i]!=s2[i]){
+      if(!m[i-2])++ans;
+      m[i]=true;
+    }
+  }
+  cout<<ans<<endl;
+}
+
 int main(){
   fastio;
+  cin>>t;
+  rep(i,0,t)solve();
   return 0;
 }
