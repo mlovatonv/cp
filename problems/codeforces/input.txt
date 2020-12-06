@@ -1,7 +1,18 @@
-abacaba
+3
+3
+.X.
+XXX
+.X.
+6
+XX.XXX
+XXXXXX
+XXX.XX
+XXXXXX
+XX.X.X
+XXXXXX
 5
-2 1 4
-1 4 b
-1 5 b
-2 4 6
-2 1 7
+XXX.X
+.X..X
+XXX.X
+..X..
+..X..
