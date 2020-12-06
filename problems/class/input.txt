@@ -1,7 +1,7 @@
-7 5
-acababa
-a
-bb
-caba
-aba
-karp
+abacaba
+5
+2 1 4
+1 4 b
+1 5 b
+2 4 6
+2 1 7

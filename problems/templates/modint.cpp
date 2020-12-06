@@ -1,73 +1,50 @@
-// https://drken1215.hatenablog.com/entry/2020/10/31/234100
-// modint
-template<int MOD> struct Fp {
-    long long val;
-    constexpr Fp(long long v = 0) noexcept : val(v % MOD) {
-        if (val < 0) val += MOD;
+class mint {
+  ll value;
+  int mod;
+public:
+  mint(ll src=0,int m=1000000007):value((src%m+m)%m),mod(m){}
+  ll v(){return value;}
+  mint operator+(const mint rhs)const{return mint(*this)+=rhs;}
+  mint operator-(const mint rhs)const{return mint(*this)-=rhs;}
+  mint operator*(const mint rhs)const{return mint(*this)*=rhs;}
+  mint operator/(const mint rhs)const{return mint(*this)/=rhs;}
+  mint &operator+=(const mint rhs){ value+=rhs.value;
+    if(value>=mod)value-=mod;
+    return *this;
+  }
+  mint &operator-=(const mint rhs){
+    if(value<rhs.value)value+=mod;
+    value-=rhs.value;
+    return *this;
+  }
+  mint &operator*=(const mint rhs){
+    value=value*rhs.value%mod;
+    return *this;
+  }
+  mint &operator/=(mint rhs){
+    ll exp=mod-2;
+    while(exp){
+      if(exp%2)*this*=rhs;
+      rhs*=rhs;
+      exp/=2;
     }
-    constexpr int getmod() const { return MOD; }
-    constexpr Fp operator - () const noexcept {
-        return val ? MOD - val : 0;
-    }
-    constexpr Fp operator + (const Fp& r) const noexcept { return Fp(*this) += r; }
-    constexpr Fp operator - (const Fp& r) const noexcept { return Fp(*this) -= r; }
-    constexpr Fp operator * (const Fp& r) const noexcept { return Fp(*this) *= r; }
-    constexpr Fp operator / (const Fp& r) const noexcept { return Fp(*this) /= r; }
-    constexpr Fp& operator += (const Fp& r) noexcept {
-        val += r.val;
-        if (val >= MOD) val -= MOD;
-        return *this;
-    }
-    constexpr Fp& operator -= (const Fp& r) noexcept {
-        val -= r.val;
-        if (val < 0) val += MOD;
-        return *this;
-    }
-    constexpr Fp& operator *= (const Fp& r) noexcept {
-        val = val * r.val % MOD;
-        return *this;
-    }
-    constexpr Fp& operator /= (const Fp& r) noexcept {
-        long long a = r.val, b = MOD, u = 1, v = 0;
-        while (b) {
-            long long t = a / b;
-            a -= t * b, swap(a, b);
-            u -= t * v, swap(u, v);
-        }
-        val = val * u % MOD;
-        if (val < 0) val += MOD;
-        return *this;
-    }
-    constexpr bool operator == (const Fp& r) const noexcept {
-        return this->val == r.val;
-    }
-    constexpr bool operator != (const Fp& r) const noexcept {
-        return this->val != r.val;
-    }
-    friend constexpr istream& operator >> (istream& is, Fp<MOD>& x) noexcept {
-        is >> x.val;
-        x.val %= MOD;
-        if (x.val < 0) x.val += MOD;
-        return is;
-    }
-    friend constexpr ostream& operator << (ostream& os, const Fp<MOD>& x) noexcept {
-        return os << x.val;
-    }
-    friend constexpr Fp<MOD> modpow(const Fp<MOD>& r, long long n) noexcept {
-        if (n == 0) return 1;
-        if (n < 0) return modpow(modinv(r), -n);
-        auto t = modpow(r, n / 2);
-        t = t * t;
-        if (n & 1) t = t * r;
-        return t;
-    }
-    friend constexpr Fp<MOD> modinv(const Fp<MOD>& r) noexcept {
-        long long a = r.val, b = MOD, u = 1, v = 0;
-        while (b) {
-            long long t = a / b;
-            a -= t * b, swap(a, b);
-            u -= t * v, swap(u, v);
-        }
-        return Fp<MOD>(u);
-    }
+    return *this;
+  }
+  mint pow(ll p){
+    if(p==0)return 1;
+    else if(p%2==1)return pow(p-1)*(*this);
+    else{
+			mint a=pow(p/2);
+			return a*a;
+		}
+  }
+	friend istream& operator>>(istream& is,mint& x) {
+    is>>x.value;
+    x.value%=x.mod;
+    if (x.value<0)x.value+=x.mod;
+    return is;
+  }
+	friend ostream& operator<<(ostream& os,const mint& x) {
+    return os<<x.value;
+  }
 };
