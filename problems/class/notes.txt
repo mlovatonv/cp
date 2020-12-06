@@ -1,3 +1,0 @@
-C para arriba -> DP
-E -> DP con subconjuntos (bitmask)
-G -> Convex hull
