@@ -20,14 +20,32 @@ using namespace std;
 using ll=long long;
 using vi=vector<int>;
 
+int t;
 
 void solve(){
-    
+  string s;
+  cin>>s;
+  int n=len(s);
+  int prev=(n-1)*9;
+  int ok=1;
+  rep(i,1,n-1){
+    if(s[0]>s[i]){
+      ok=0;
+      break;
+    }
+    if(s[i]>s[0]){
+      break;
+    }
+  }
+  int curr=(s[0]-'0')-1+ok;
+  dbg(prev);
+  dbg(curr);
+  int ans=prev+curr;
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
   cin>>t;
   rep(i,1,t)solve();
   return 0;

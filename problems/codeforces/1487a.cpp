@@ -20,14 +20,25 @@ using namespace std;
 using ll=long long;
 using vi=vector<int>;
 
+int t;
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  vi a(n);
+  rep(i,0,n-1){
+    cin>>a[i];
+  }
+  int mn=*min_element(all(a));
+  int ans=0;
+  rep(i,0,n-1){
+    if(a[i]!=mn)++ans;
+  }
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
   cin>>t;
   rep(i,1,t)solve();
   return 0;

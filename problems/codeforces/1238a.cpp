@@ -20,14 +20,20 @@ using namespace std;
 using ll=long long;
 using vi=vector<int>;
 
+int t;
 
 void solve(){
-    
+  ll x,y;
+  cin>>x>>y;
+  if(x-y>1){
+    cout<<"YES"<<endl;
+  }else{
+    cout<<"NO"<<endl;
+  }
 }
 
 int main(){
   fastio;
-  int t;
   cin>>t;
   rep(i,1,t)solve();
   return 0;

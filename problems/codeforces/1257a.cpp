@@ -22,7 +22,16 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n,x,a,b;
+  cin>>n>>x>>a>>b;
+  vi p={a,b};
+  sort(all(p));
+  int ans=p[1]-p[0];
+  ans+=min(x,p[0]-1);
+  x-=min(x,p[0]-1);
+  ans+=min(x,n-p[1]);
+  x-=min(x,n-p[1]);
+  cout<<ans<<endl;
 }
 
 int main(){

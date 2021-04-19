@@ -20,14 +20,31 @@ using namespace std;
 using ll=long long;
 using vi=vector<int>;
 
+int t;
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  int maxties=n/2;
+  dbg(maxties);
+  rep(i,1,n-1){
+    rep(j,i+1,n){
+      dbg(j);
+      dbg(i);
+      if((j-i)<maxties){
+        cout<<"1 ";  
+      }elif((j-i)>maxties){
+        cout<<"-1 ";  
+      }else{
+        cout<<n%2<<' ';
+      }
+    }
+  }
+  cout<<endl;
 }
 
 int main(){
   fastio;
-  int t;
   cin>>t;
   rep(i,1,t)solve();
   return 0;

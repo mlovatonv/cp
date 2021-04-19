@@ -22,7 +22,28 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  vector<vi> idxs(n+1);
+  rep(i,0,n-1){
+    int a;
+    cin>>a;
+    idxs[a].pb(i);
+  }
+  sort(
+      all(idxs),
+      [](const vi & a,const vi & b)->bool{ return len(a) > len(b); }
+  );
+  int ans=1e9;
+  ret(v,idxs){
+    if(len(v)==1)continue;
+    int n2=len(v);
+    rep(i,0,n2-2){
+      ans=min(ans,v[i+1]-v[i]+1);
+    }
+  }
+  if(ans==1e9)ans=-1;
+  cout<<ans<<endl;
 }
 
 int main(){

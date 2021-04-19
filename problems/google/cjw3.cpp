@@ -20,16 +20,45 @@ using namespace std;
 using ll=long long;
 using vi=vector<int>;
 
-
-void solve(){
-    
+vi solve(){
+  vi ans;
+  int m,n,p,t;
+  cin>>m>>n>>p;
+  t=m+n;
+  vector<vi> g(t);
+  rep(i,0,t-1){
+    string s;
+    cin>>s;
+    rep(j,0,t-1){
+      if(j=='Y'&&j!=i){
+        g[i].pb(j);
+      }
+    }
+  }
+  rep(i,0,p){
+    int a,b;
+    cin>>a>>b;
+    --a;
+    --b;
+    // a and b know each other
+    if(find(all(g[a]),b)!=g[a].end()){
+      ans.pb(0);
+      continue;
+    }
+    // a manager know both
+  }
+  return ans;
 }
 
 int main(){
   fastio;
   int t;
   cin>>t;
-  rep(i,1,t)solve();
+  rep(i,1,t){
+    cout<<"Case #"<<i<<": ";
+    ret(j,solve())cout<<j<<" ";
+    cout<<endl;
+  }
   return 0;
 }
 

@@ -20,14 +20,31 @@ using namespace std;
 using ll=long long;
 using vi=vector<int>;
 
+int t;
 
 void solve(){
-    
+  string s;
+  cin>>s;
+  vi ans;
+  vector<string> options={"twone","one","two"};
+  ret(ss,options){
+    size_t idx=0;
+    int diff=len(ss)/2;
+    dbg(ss);
+    while((idx=s.find(ss,idx))!=string::npos){
+      dbg(idx);
+      idx+=diff;
+      s[idx]='x';
+      ans.pb(idx+1);
+    }
+  }
+  cout<<len(ans)<<endl;
+  ret(i,ans)cout<<i<<' ';
+  cout<<endl;
 }
 
 int main(){
   fastio;
-  int t;
   cin>>t;
   rep(i,1,t)solve();
   return 0;

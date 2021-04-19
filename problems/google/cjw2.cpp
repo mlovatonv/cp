@@ -20,16 +20,38 @@ using namespace std;
 using ll=long long;
 using vi=vector<int>;
 
-
-void solve(){
-    
+string solve(){
+  string ans="A";
+  int n;
+  cin>>n;
+  vi l(n);
+  rep(i,0,n-1)cin>>l[i];
+  char last;
+  rep(i,0,n-1){
+    if(i%2==0){ // abc
+      rep(j,1,l[i]){
+        last=ans[len(ans)-1];
+        ans+=last+1;
+      }
+      last=ans[len(ans)-1];
+      if(i<n-1&&(last-'A')<l[i+1]){ // not last
+        ans[len(ans)-1]='A'+l[i+1];
+      }
+    }else{ // cba
+      rep(j,1,l[i]){
+        ans+='A'+(l[i]-j);
+      }
+    }
+  }
+  return ans;
 }
 
 int main(){
   fastio;
   int t;
   cin>>t;
-  rep(i,1,t)solve();
+  rep(i,1,t)
+    cout<<"Case #"<<i<<": "<<solve()<<endl;
   return 0;
 }
 

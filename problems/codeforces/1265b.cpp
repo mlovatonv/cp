@@ -19,15 +19,34 @@
 using namespace std;
 using ll=long long;
 using vi=vector<int>;
+using pii=pair<int,int>;
 
+int t;
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  vi p(n),pos(n+1);
+  rep(i,0,n-1){
+    cin>>p[i];
+    pos[p[i]]=i;
+  }
+
+  string s(n,'0');
+  s[0]=s[n-1]='1';
+  pii part={pos[1],pos[1]};
+  rep(i,2,n-1){
+    int idx=pos[i];
+    part={min({part.fi,part.se,idx}),max({part.fi,part.se,idx})};
+    if((part.se-part.fi+1)==i){
+      s[i-1]='1';
+    }
+  }
+  cout<<s<<endl;
 }
 
 int main(){
   fastio;
-  int t;
   cin>>t;
   rep(i,1,t)solve();
   return 0;

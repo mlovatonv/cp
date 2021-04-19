@@ -20,14 +20,30 @@ using namespace std;
 using ll=long long;
 using vi=vector<int>;
 
+int t;
 
 void solve(){
-    
+  int h,n;
+  cin>>h>>n;
+  vi p(n);
+  rep(i,0,n-1)cin>>p[i];
+  int i=0,j=0,magic=0,cnt;
+  while(i<n){
+    j=i+1;
+    while(j<n&&p[j-1]==p[j]+1){ // 8 7 ok 8 6 not ok
+      ++j;
+    }
+    cnt=j-i;
+    if((cnt+(i==0))%2&&p[j-1]>1){
+      ++magic;
+    }
+    i+=cnt;
+  }
+  cout<<magic<<endl;
 }
 
 int main(){
   fastio;
-  int t;
   cin>>t;
   rep(i,1,t)solve();
   return 0;

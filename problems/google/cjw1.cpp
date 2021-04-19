@@ -21,15 +21,36 @@ using ll=long long;
 using vi=vector<int>;
 
 
-void solve(){
-    
+int solve(){
+  int n;
+  cin>>n;
+  set<int> s;
+  map<int,int> occ;
+  rep(i,0,n-1){
+    int a;
+    cin>>a;
+    s.insert(a);
+    if(occ.find(a)==occ.end()){
+      occ[a]=0;
+    }
+    ++occ[a];
+  }
+  int i=1;
+  int ans=0;
+  ret(j,s){
+    ans+=occ[j]*i;
+    ++i;
+  }
+  return ans;
 }
 
 int main(){
   fastio;
   int t;
   cin>>t;
-  rep(i,1,t)solve();
+  rep(i,1,t){
+    cout<<"Case #"<<i<<": "<<solve()<<endl; 
+  }
   return 0;
 }
 

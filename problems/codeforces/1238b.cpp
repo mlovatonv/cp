@@ -20,14 +20,32 @@ using namespace std;
 using ll=long long;
 using vi=vector<int>;
 
+int t;
 
 void solve(){
-    
+  ll n,r;
+  cin>>n>>r;
+  set<ll> s;
+  rep(i,1,n){
+    ll x;
+    cin>>x;
+    s.insert(x);
+  }
+  n=len(s);
+  ll idx=n;
+  int ans=0;
+  for(auto it=s.rbegin();it!=s.rend();++it){
+    if((*it)<=(r*(n-idx))){
+      break;
+    }
+    ++ans;
+    --idx; 
+  }
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
   cin>>t;
   rep(i,1,t)solve();
   return 0;
