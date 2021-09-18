@@ -22,7 +22,15 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n,x;
+  cin>>n>>x;
+  int ans;
+  if(n<3){
+    ans=1;
+  }else{
+    ans=(n-3)/x+2;
+  }
+  cout<<ans<<endl;
 }
 
 int main(){

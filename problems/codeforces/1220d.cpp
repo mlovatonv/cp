@@ -22,14 +22,38 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  vector<ll> b(n);
+  rep(i,0,n-1)cin>>b[i];
+
+  ll mxb=*max_element(all(b));
+  ll x=0,y=1;
+  int minacc=3e5,acc=0;
+  vector<ll> ans,temp;
+  while(y<=mxb){
+    acc=0;
+    temp.clear();
+    ret(i,b){
+      if(__builtin_ctzll(i)!=x){
+        ++acc;
+        temp.pb(i);
+      }
+    }
+    if(acc<minacc){
+      minacc=acc;
+      ans=temp;
+    }
+    ++x;
+    y*=2LL; 
+  }
+
+  cout<<len(ans)<<endl;
+  ret(i,ans)cout<<i<<' ';
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

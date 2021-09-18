@@ -22,14 +22,22 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  ll n,k,ans;
+  cin>>n>>k;
+  if(k<=n){
+    ans=(k-1LL)/2LL;
+  }else{
+    if(k-n>n){
+      ans=0;
+    }else{
+      ans=((2LL*n)-k+1LL)/2LL; 
+    }   
+  }
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

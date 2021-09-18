@@ -22,14 +22,33 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  vi a(n+1),b(n+1);
+  rep(i,0,n-1){
+    int c;
+    cin>>c;
+    a[c]=i;
+  }
+  rep(i,0,n-1){
+    int c;
+    cin>>c;
+    b[c]=i;
+  }
+
+  vi c(n+10);
+  rep(i,1,n){
+    int d=a[i]<=b[i]?b[i]-a[i]:n-a[i]+b[i];
+    dbg(i);
+    dbg(d);
+    ++c[d];
+  }
+  int ans=*max_element(all(c));
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

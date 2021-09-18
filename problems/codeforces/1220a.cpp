@@ -22,14 +22,26 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  string s;
+  cin>>s;
+  map<char,int> m;
+  m['o']=m['n']=m['e']=m['z']=m['r']=0;
+  ret(c,s){
+    ++m[c];
+  }
+  int n1=min({m['o'],m['n'],m['e']});
+  m['o']-=n1;
+  m['n']-=n1;
+  m['e']-=n1;
+  int n2=min({m['z'],m['e'],m['r'],m['o']});
+  rep(i,1,n1)cout<<"1 ";
+  rep(i,1,n2)cout<<"0 ";
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

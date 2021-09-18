@@ -22,14 +22,32 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  string s;
+  cin>>s;
+  int n=len(s);
+
+  vector<char> v; // vector of min char
+
+  v.pb(s[0]);
+  rep(i,1,n-1){
+    if(v.back()<=s[i]){
+      v.pb(v.back());
+    }else{
+      v.pb(s[i]);
+    }
+  }
+  
+  rep(i,0,n-1){
+    if(s[i]==v[i]){
+      cout<<"Mike"<<endl;
+    }else{
+      cout<<"Ann"<<endl;
+    }
+  }
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

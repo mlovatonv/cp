@@ -21,16 +21,49 @@ using ll=long long;
 using vi=vector<int>;
 
 
-void solve(){
-    
+int solve(){
+  string s;
+  cin>>s;
+  int n=len(s);
+  if(n<2){
+    return 0;
+  }
+  vector<pair<char,int>> v;
+  char p=s[0];
+  int cnt=1;
+  rep(i,1,n-1){
+    if(s[i]!=p){
+      v.pb({p,cnt});
+      p=s[i];
+      cnt=1;
+    }else{
+      ++cnt;
+      continue; 
+    }
+  }
+  v.pb({p,cnt});
+
+  int m=len(v);
+  
+  if(m%2==0){
+    return 0;
+  }
+
+  int mid=m/2;
+  
+  rep(i,1,mid){
+    if(v[mid+i].fi!=v[mid-i].fi||
+       (v[mid+i].se+v[mid-i].se)<3){
+      return 0;
+    }
+  }
+
+  return v[mid].se>=2?v[mid].se+1:0;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
-  solve();
+  cout<<solve()<<endl;
   return 0;
 }
 

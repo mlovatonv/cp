@@ -20,16 +20,34 @@ using namespace std;
 using ll=long long;
 using vi=vector<int>;
 
+int ceil(int x,int y){
+  return (x+y-1)/y;
+}
 
 void solve(){
-    
+  int n,t;
+  cin>>n>>t;
+  vector<pair<int,int>> sd(n);
+  rep(i,0,n-1){
+    int s,d;
+    cin>>s>>d;
+    sd[i]={s,d};
+  }
+
+  int ans=0,minf=INT_MAX;
+  rep(i,0,n-1){
+    int s=sd[i].fi,d=sd[i].se;
+    int f=t<=s?s:d*ceil(t-s,d)+s;
+    if(f<minf){
+      ans=i;
+      minf=f;
+    }
+  }
+  cout<<ans+1<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

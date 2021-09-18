@@ -22,7 +22,10 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int a,b;
+  cin>>a>>b;
+  int ans=abs(b-a)/10+((b-a)%10?1:0);
+  cout<<ans<<endl;
 }
 
 int main(){

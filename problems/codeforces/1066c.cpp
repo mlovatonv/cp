@@ -19,17 +19,32 @@
 using namespace std;
 using ll=long long;
 using vi=vector<int>;
-
+const int N=2e5+1;
 
 void solve(){
-    
+  int q;
+  cin>>q;
+  map<int,int> l,r;
+  char c;
+  int ans,id;
+  cin>>c>>id;
+  rep(i,2,q){
+    dbg(l);
+    dbg(r);
+    cin>>c>>id;
+    if(c=='L')l[id]=len(l)+1;
+    elif(c=='R')r[id]=len(r)+1;
+    else{
+      if(l.find(id)!=l.end())ans=min(len(l)-l[id],len(r)+l[id]);
+      elif(r.find(id)!=r.end())ans=min(len(l)+r[id],len(r)-r[id]);
+      else ans=min(len(l),len(r));
+      cout<<ans<<endl;
+    }
+  }
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

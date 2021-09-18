@@ -22,14 +22,35 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  vector<vector<ll>> m(n,vector<ll>(n));
+  rep(i,0,n-1){
+    rep(j,0,n-1){
+      cin>>m[i][j];
+    }
+  }
+
+  vector<ll> ans;
+  ll temp;
+
+  temp=sqrt((m[1][0]*m[2][0])/m[2][1]);
+  ans.pb(temp);
+  temp=sqrt((m[1][0]*m[2][1])/m[2][0]);
+  ans.pb(temp);
+
+  rep(i,2,n-1){
+    temp=sqrt((m[i][0]*m[i][1])/m[1][0]);
+    ans.pb(temp);
+  }
+
+  ret(i,ans){
+    cout<<i<<endl;
+  }
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

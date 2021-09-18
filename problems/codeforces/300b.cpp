@@ -1,65 +1,105 @@
+#ifdef DBG_MACRO_NO_WARNING
+#include <dbg.h>
+#else
+#define dbg(...) ((void)0)
+#endif
+
 #include <bits/stdc++.h>
-#define N 50
+#define fastio ios_base::sync_with_stdio(false);cin.tie(NULL)
+#define elif else if
+#define rep(i,s,e) for(int i=s;i<=e;++i)
+#define rrep(i,s,e) for(int i=s;i>=e;--i)
+#define ret(i,c) for(auto &i:c)
+#define all(a) a.begin(),a.end()
+#define len(a) (a.size())
+#define pb push_back
+#define fi first
+#define se second
+#define mp make_pair
 using namespace std;
+using ll=long long;
+using vi=vector<int>;
 
-int n, m, a, b, nv, pathCount, s1Count, s2Count, s3Count;
-bool v[N], g[N][N];
-int s1[N], s2[N], s3[N], path[5];
 
-void invalid() {
-  cout << "-1" << endl;
-  exit(0);
-}
-
-void dfs(int vi, int l) {
-  v[vi] = true;
-  path[pathCount++] = vi;
-  if (l > 2 || pathCount > 3) invalid();
-  for (int j = 1; j <= n; ++j)
-    if (g[vi][j] && !v[j]) dfs(j, l + 1);
-}
-
-int main(void) {
-  cin >> n >> m;
-  for (int i = 1; i <= n; ++i) {
-    cin >> a >> b;
-    g[a][b] = true;
-    g[b][a] = true;
-    g[i][i] = true;
+void solve(){
+  int n,m;
+  cin>>n>>m;
+  vector<vector<int>> g(n+1),comp;
+  vector<int> vis(n+1);
+  rep(i,1,m){
+    int a,b;
+    cin>>a>>b;
+    g[a].pb(b);
+    g[b].pb(a);
   }
 
-  for (int i = 1; i <= n; ++i) {
-    if (v[i]) continue;
-    pathCount = 0;
-    dfs(i, 0);
-    //cout << i << " " << pathCount << endl;
-    if (pathCount == 3) {
-      for (int j = 0; j < 3; ++j) s3[s3Count++] = path[j];
-    } else if (pathCount == 2) {
-      for (int j = 0; j < 2; ++j) s2[s2Count++] = path[j];
-    } else if (pathCount == 1) {
-      s1[s1Count++] = path[0];
+  function<void(int)> dfs=[&](int x){
+    vis[x]=1;
+    comp.back().pb(x);
+    ret(j,g[x]){
+      if(!vis[j]){
+        dfs(j);   
+      }    
+    }
+  };
+  rep(i,1,n){
+    if(!vis[i]){
+      comp.pb(vector<int>());
+      dfs(i);
     }
   }
 
-  if (s2Count / 2 > s1Count) invalid();
-  int j = 0;
-  for (int i = 0; i < n && s1Count && s2Count; i += 2) {
-    s3[s3Count++] = s1[j++];
-    s3[s3Count++] = s2[i];
-    s3[s3Count++] = s2[i + 1];
-    --s1Count;
-    s2Count -= 2;
+  ret(i,comp){
+    if(i.size()>3){
+      cout<<-1<<endl;
+      return;
+    }
+    if(i.size()==2){
+      ret(j,comp){
+        if(j.size()==1){
+          i.pb(j[0]);
+          j.clear();
+          break;
+        }
+      }
+      if(i.size()==2){
+        cout<<-1<<endl;
+        return;
+      }
+    }
   }
-  for (; j < n && s1Count >= 3; j += 3) {
-    s3[s3Count++] = s1[j];
-    s3[s3Count++] = s1[j + 1];
-    s3[s3Count++] = s1[j + 2];
-    s1Count -= 3;
+  ret(i,comp){
+    if(i.size()==1){
+      dbg(i);
+      int t=0;
+      ret(j,comp){
+        if(j.size()==1&&i[0]!=j[0]){
+          dbg(j);
+          ++t;
+          i.pb(j[0]);
+          j.clear();
+        }
+        if(t==2)break;
+      }
+      if(t!=2){
+        cout<<-1<<endl;
+        return;
+      }
+      dbg(i);
+    }
   }
-  if (s1Count) invalid();
 
-  for (int i = 0; i < n; i += 3)
-    cout << s3[i] << " " << s3[i + 1] << " " << s3[i + 2] << endl;
+  dbg(comp);
+  ret(i,comp){
+    if(i.size()==3){
+      cout<<i[0]<<" "<<i[1]<<" "<<i[2]<<endl;     
+    }
+  }
+}
+
+int main(){
+  fastio;
+  solve();
   return 0;
 }
+

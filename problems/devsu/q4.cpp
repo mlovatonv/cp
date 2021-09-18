@@ -22,14 +22,33 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  string l;
+  ll n,mx_n=2147483647;
+  cin>>l;
+  cin>>n;
+  vector<pair<ll,ll>> v;
+  ll a=len(l),b=0,s=len(l);
+  while(b<mx_n){
+    b+=a;
+    v.pb({a,b}); // s=2 ? 2, 2
+    a*=s;
+  }
+  string ans;
+  ll prev;
+  for(auto it=v.rbegin();it!=v.rend();++it){
+    prev=it->se-it->fi;
+    if(prev<n&&n<=it->se){
+      ll part=it->fi/s;
+      int l_pos=(n-prev-1)/part;
+      ans+=l[l_pos];
+      n-=(l_pos+1)*part;
+    }
+  }
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

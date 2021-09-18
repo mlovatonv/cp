@@ -22,7 +22,17 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  string s;
+  cin>>s;
+  map<char,int> m;
+  ret(c,s)++m[c];
+  int c1=0,c2=0;
+  ret(p,m){
+    if(p.se>1)++c1;
+    else ++c2;
+  }
+  int ans=c1+c2/2;
+  cout<<ans<<endl;
 }
 
 int main(){

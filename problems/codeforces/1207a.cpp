@@ -9,7 +9,7 @@
 #define elif else if
 #define rep(i,s,e) for(int i=s;i<=e;++i)
 #define rrep(i,s,e) for(int i=s;i>=e;--i)
-#define ret(i,c) for(auto &i:c)
+#define ret(i,c) for(auto i:c)
 #define all(a) a.begin(),a.end()
 #define len(a) (a.size())
 #define pb push_back
@@ -22,15 +22,24 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int b,p,f,h,c;
+  cin>>b>>p>>f>>h>>c;
+  int ans,x=b/2;
+  if(h<c){
+    ans=min(f,x)*c;
+    ans+=min(max(x-f,0),p)*h;
+  }else{
+    ans=min(p,x)*h;
+    ans+=min(max(x-p,0),f)*c;
+  }
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
   int t;
   cin>>t;
-  rep(i,1,t)
-  solve();
+  rep(i,1,t)solve();
   return 0;
 }
 

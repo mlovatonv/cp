@@ -22,7 +22,25 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  ll a,b,x,y,n,n2,a1,a2,b1,b2;
+  cin>>a>>b>>x>>y>>n;
+  a1=a2=a;
+  b1=b2=b;
+  
+  n2=n-(b-y);
+  b1=max(b1-n,y);
+  if(n2>0){
+    a1=max(a1-n2,x);
+  }
+
+  n2=n-(a-x);
+  a2=max(a2-n,x);
+  if(n2>0){
+    b2=max(b2-n2,y);
+  }
+  
+  ll ans=min(a1*b1,a2*b2);
+  cout<<ans<<endl;
 }
 
 int main(){

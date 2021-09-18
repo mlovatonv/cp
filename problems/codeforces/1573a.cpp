@@ -22,7 +22,28 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  string s;
+  cin>>s;
+  dbg(s);
+  int acc=0,cnt=0;
+  ret(c,s){
+    acc+=c-'0';
+    cnt+=c=='0'?0:1;
+  }
+  int ans=0;
+  dbg(acc);
+  dbg(cnt);
+  if(acc){
+    ans+=acc; 
+  }
+  if(s[n-1]=='0'){
+    ans+=cnt;    
+  }else{
+    ans+=cnt-1;
+  }
+  cout<<ans<<endl;
 }
 
 int main(){

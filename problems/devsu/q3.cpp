@@ -22,14 +22,24 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  ll n;
+  cin>>n;
+  ll ans=-1;
+  if(n==1){
+    ans=1; 
+  }elif(n==2){
+    ans=2;
+  }else{
+    ans=((n-3)/4)*2+3;
+    if(n%2==0){
+      ++ans;
+    }
+  }
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

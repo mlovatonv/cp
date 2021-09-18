@@ -22,7 +22,10 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  ll L,v,l,r;
+  cin>>L>>v>>l>>r;
+  ll ans=L/v-(r/v-(l-1)/v);
+  cout<<ans<<endl;
 }
 
 int main(){

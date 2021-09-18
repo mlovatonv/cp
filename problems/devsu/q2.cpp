@@ -22,14 +22,38 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  map<int,int> m;
+  int a;
+  while(cin>>a)++m[a];
+  int ans;
+  if(len(m)==0){
+    ans=-1;
+  }elif(len(m)==1){
+    ans=m.begin()->fi;
+  }else{
+    ans=m.begin()->fi;
+    int mx_acc=0;
+    int acc=0;
+    for(auto it=++m.begin();it!=m.end();++it){
+      acc+=it->fi*it->se;
+    }
+    mx_acc=max(mx_acc,acc);
+    for(auto it=++m.begin();it!=m.end();++it){
+      acc-=it->fi*it->se;
+      --it;
+      acc+=it->fi*it->se;
+      ++it;
+      if(acc>=mx_acc){
+        ans=it->fi;
+        mx_acc=acc;
+      }
+    }
+  }
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

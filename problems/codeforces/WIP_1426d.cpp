@@ -1,3 +1,5 @@
+//https://codeforces.com/blog/entry/83120
+
 #ifdef DBG_MACRO_NO_WARNING
 #include <dbg.h>
 #else
@@ -22,14 +24,28 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  ll n;
+  cin>>n;
+  vector<ll> a(n);
+  rep(i,0,n-1)cin>>a[i];
+
+  map<ll,int> m;
+  int ans=0;
+  ll p=0;
+  rep(i,0,n-1){
+    p+=a[i];
+    if(m.find(p)!=m.end()){
+      p=0; 
+      m.clear();
+      ++ans;
+    }
+    m[p]=i;
+  }
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

@@ -22,14 +22,27 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n;
+  cin>>n;
+
+  vector<ll> l{1,10,100,1000,10000,100000,1000000,10000000,100000000,1000000000};
+
+  int ans=0;
+  ret(i,l){
+    if(i*10LL>n&&n>=i){
+      dbg(n);
+      dbg(i);
+      dbg(n/i);
+      ans=(n/i+1LL)*i-n;
+      break;
+    }
+  }
+
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

@@ -22,7 +22,9 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  string n;
+  int s;
+  cin>>n>>s;
 }
 
 int main(){

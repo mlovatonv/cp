@@ -22,7 +22,28 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n,m;
+  cin>>n>>m;
+  vector<vector<int>> t(n,vector<int>(4));
+  rep(i,0,n-1){
+    cin>>t[i][0]>>t[i][1]>>t[i][2]>>t[i][3];
+  }
+
+  if(m%2){
+    cout<<"NO"<<endl;
+    return;
+  }
+
+  bool valid=false;
+  rep(i,0,n-1){
+    if(t[i][1]==t[i][2]){
+      valid=true;
+      break;
+    }
+  }
+
+  if(valid)cout<<"YES"<<endl;
+  else cout<<"NO"<<endl;
 }
 
 int main(){

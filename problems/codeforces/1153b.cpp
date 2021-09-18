@@ -22,14 +22,35 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n,m,h;
+  cin>>n>>m>>h;
+  vi a(m),b(n);
+  vector<vi> c(n,vi(m));
+  rep(i,0,m-1)cin>>a[i];
+  rep(i,0,n-1)cin>>b[i];
+  rep(i,0,n-1)rep(j,0,m-1)cin>>c[i][j];
+
+  vector<vi> ans(n,vi(m,-1));
+  rep(i,0,n-1)rep(j,0,m-1)if(b[i]==a[j])ans[i][j]=b[i];
+  rep(i,0,n-1)rep(j,0,m-1)if(c[i][j]==0)ans[i][j]=0;
+  rep(i,0,n-1){
+    rep(j,0,m-1){
+      if(ans[i][j]==-1){
+        ans[i][j]=min(b[i],a[j]);
+      }
+    }
+  }
+
+  rep(i,0,n-1){
+    rep(j,0,m-1){
+      cout<<ans[i][j]<<" ";
+    }
+    cout<<endl;
+  }
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

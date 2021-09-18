@@ -22,7 +22,31 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  vector<int> a(n),b(n);
+  rep(i,0,n-1)cin>>a[i];
+  rep(i,0,n-1)cin>>b[i];
+
+  vector<pair<int,int>> mxb;
+  int prev=0;
+  rep(i,0,n-1){
+    if(b[i]>prev){
+      mxb.pb(mp(b[i],i));
+      prev=b[i];
+    }
+  }
+  
+  dbg(mxb);
+
+  int ans=INT_MAX,mgi;
+  rep(i,0,n-1){
+    mgi=lower_bound(all(mxb),mp(a[i],0))->se;
+    dbg(a[i]);
+    dbg(mgi);
+    ans=min(ans,mgi+i); 
+  }
+  cout<<ans<<endl;
 }
 
 int main(){

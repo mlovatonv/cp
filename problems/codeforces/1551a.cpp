@@ -22,7 +22,15 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  ll n;
+  cin>>n;
+  ll c1=n/3LL+n%3LL;
+  ll c2=n/3LL;
+  if(c1-c2==2){
+    c1-=2;
+    ++c2;
+  }
+  cout<<c1<<" "<<c2<<endl;
 }
 
 int main(){

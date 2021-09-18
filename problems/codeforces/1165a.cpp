@@ -22,14 +22,20 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n,x,y;
+  cin>>n>>x>>y;
+  string s;
+  cin>>s;
+  reverse(all(s));
+  int ans=0;
+  rep(i,0,y-1)ans+=s[i]!='0';
+  ans+=s[y]!='1';
+  rep(i,y+1,x-1)ans+=s[i]!='0';
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

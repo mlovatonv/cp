@@ -9,7 +9,7 @@
 #define elif else if
 #define rep(i,s,e) for(int i=s;i<=e;++i)
 #define rrep(i,s,e) for(int i=s;i>=e;--i)
-#define ret(i,c) for(auto &i:c)
+#define ret(i,c) for(auto i:c)
 #define all(a) a.begin(),a.end()
 #define len(a) (a.size())
 #define pb push_back
@@ -22,15 +22,24 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  vi a(n);
+  rep(i,0,n-1)cin>>a[i];
+  string s;
+  s.assign(51,'a');
+  cout<<s<<endl;
+  rep(i,0,n-1){
+    s[a[i]]=s[a[i]]=='a'?'b':'a';
+    cout<<s<<endl;
+  }
 }
 
 int main(){
   fastio;
   int t;
   cin>>t;
-  rep(i,1,t)
-  solve();
+  rep(i,1,t)solve();
   return 0;
 }
 

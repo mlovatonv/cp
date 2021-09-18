@@ -9,7 +9,7 @@
 #define elif else if
 #define rep(i,s,e) for(int i=s;i<=e;++i)
 #define rrep(i,s,e) for(int i=s;i>=e;--i)
-#define ret(i,c) for(auto &i:c)
+#define ret(i,c) for(auto i:c)
 #define all(a) a.begin(),a.end()
 #define len(a) (a.size())
 #define pb push_back
@@ -22,14 +22,25 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  string s;
+  cin>>s;
+  string ss="ZONe";
+  int ans=0;
+  size_t f=0;
+  while(f!=string::npos){
+    f=s.find(ss,f);
+    if(f!=string::npos){
+      f+=len(ss);
+      ++ans;
+    }else{
+      break;
+    }
+  }
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

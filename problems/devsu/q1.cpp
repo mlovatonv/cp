@@ -22,14 +22,22 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  string s1,s2;
+  cin>>s1>>s2;
+  int ans=-1;
+  size_t p=s1.find(s2);
+  if(p!=string::npos){
+    int l=p;
+    int r=len(s1)-p-len(s2);
+    dbg(l);
+    dbg(r);
+    ans=max(l,r); 
+  }
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

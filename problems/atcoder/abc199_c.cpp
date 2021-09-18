@@ -9,7 +9,7 @@
 #define elif else if
 #define rep(i,s,e) for(int i=s;i<=e;++i)
 #define rrep(i,s,e) for(int i=s;i>=e;--i)
-#define ret(i,c) for(auto &i:c)
+#define ret(i,c) for(auto i:c)
 #define all(a) a.begin(),a.end()
 #define len(a) (a.size())
 #define pb push_back
@@ -22,14 +22,37 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  string s;
+  cin>>s;
+  int q;
+  cin>>q;
+  string first=s.substr(0,n);
+  string second=s.substr(n,n);
+  dbg(first+second);
+  rep(i,1,q){
+    int t,a,b;
+    cin>>t>>a>>b;
+    --a,--b;
+    if(t==1){
+      if(a<n&&b<n){
+        swap(first[a],first[b]);
+      }elif(n<=a&&n<=b){
+        swap(second[a-n],second[b-n]); 
+      }else{
+        swap(first[a],second[b-n]);
+      }
+    }else{
+      swap(first,second); 
+    }
+    dbg(first+second);
+  }
+  cout<<first+second<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

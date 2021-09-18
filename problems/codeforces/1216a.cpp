@@ -22,14 +22,21 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n;
+  string s;
+  cin>>n>>s;
+  int ans=0;
+  for(int i=0;i<n;i+=2){
+    if(s[i]==s[i+1]){
+      ++ans;
+      s[i]=s[i]=='a'?'b':'a';
+    }
+  }
+  cout<<ans<<endl<<s<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

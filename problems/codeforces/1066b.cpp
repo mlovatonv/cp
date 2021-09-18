@@ -22,14 +22,33 @@ using vi=vector<int>;
 
 
 void solve(){
+  int n,r;
+  cin>>n>>r;
+  vi a(n);
+  rep(i,0,n-1)cin>>a[i];
+  int i=0,j=0,k=0,ans=0;
+  while(i<n){
+    j=min(i+r-1,n-1);
+    i=max(i-r+1,0);
     
+    k=-1;
+    while(i<=j){
+      if(a[i]==1)k=i;
+      ++i;
+    }
+    if(k==-1){
+      cout<<-1<<endl; //invalid
+      return;
+    }
+
+    i=k+r;
+    ++ans;
+  }
+  cout<<ans<<endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

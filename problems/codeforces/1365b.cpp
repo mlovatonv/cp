@@ -22,7 +22,22 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n;
+  cin>>n;
+  vi a(n),b(n);
+  rep(i,0,n-1)cin>>a[i];
+  rep(i,0,n-1)cin>>b[i];
+  vi a2=a;
+  sort(all(a2));
+  
+  int c=0,d=0;
+  rep(i,0,n-1){
+    if(b[i])++c;
+    else ++d;
+  }
+
+  if(a!=a2&&(c==0||d==0))cout<<"No"<<endl;
+  else cout<<"Yes"<<endl;
 }
 
 int main(){

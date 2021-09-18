@@ -22,7 +22,11 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  ll n;
+  cin>>n;
+  ll c=ceil(sqrt(n)),f=floor(sqrt(n));
+  ll ans=((n<=c*f)?c+f:2LL*c)-2LL;
+  cout<<ans<<endl;
 }
 
 int main(){

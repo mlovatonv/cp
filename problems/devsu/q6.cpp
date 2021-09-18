@@ -20,16 +20,31 @@ using namespace std;
 using ll=long long;
 using vi=vector<int>;
 
+ll comb( ll n, ll k )
+{
+    ll result = n;
+    for(ll i = n - 1; i > k ; --i ) {
+        result *= i;
+    }
+    return result;
+}
 
 void solve(){
-    
+  ll s, u;
+  cin >> s >> u;
+  ll ans;
+  if ((s - 1) > u){
+    ans = 0; 
+  } else {
+    ans = comb(u, s);
+    dbg(ans);
+    if (s > 1) ans += comb(u, s - 1); 
+  }
+  cout << ans << endl;
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }

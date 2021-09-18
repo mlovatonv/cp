@@ -22,14 +22,16 @@ using vi=vector<int>;
 
 
 void solve(){
-    
+  int n,q;
+  cin>>n>>q;
+  vi a(n);
+  rep(i,0,n-1)cin>>a[i];
+
+  
 }
 
 int main(){
   fastio;
-  int t;
-  cin>>t;
-  rep(i,1,t)
   solve();
   return 0;
 }
