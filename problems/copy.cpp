@@ -1,10 +1,7 @@
-#ifdef DBG_MACRO_NO_WARNING
-#include <dbg.h>
-#else
-#define dbg(...) ((void)0)
-#endif
+#include <iostream>
+#include <vector>
+using namespace std;
 
-#include <bits/stdc++.h>
 #define fastio ios_base::sync_with_stdio(false);cin.tie(NULL)
 #define elif else if
 #define rep(i,s,e) for(int i=s;i<=e;++i)
@@ -16,9 +13,7 @@
 #define fi first
 #define se second
 #define mp make_pair
-using namespace std;
 using ll=long long;
-using vi=vector<int>;
 
 
 void solve(){
