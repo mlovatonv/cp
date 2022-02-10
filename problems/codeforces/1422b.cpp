@@ -1,34 +1,52 @@
-#include <bits/stdc++.h>
-#define fastio ios_base::sync_with_stdio(false);cin.tie(NULL)
-#define ll long long
-#define rep(i,s,e) for(int i=s;i<e;++i)
-#define fi first
-#define se second
+#include <algorithm>
+#include <iostream>
+#include <vector>
 using namespace std;
 
-const int N=1e4+5;
-int t,n,m,as,op,iavg;
-double avg;
-ll a[N];
+#define fastio ios_base::sync_with_stdio(false);cin.tie(NULL)
+#define elif else if
+#define rep(i, s, e) for (int i = s; i <= e; ++i)
+#define rrep(i, s, e) for (int i = s; i >= e; --i)
+#define ret(i, c) for (auto &i : c)
+#define all(a) a.begin(), a.end()
+#define len(a) (a.size())
+#define pb push_back
+#define fi first
+#define se second
+#define mp make_pair
+using ll = long long;
 
-int main(void){
-  fastio;
-  cin>>t;
-  while(t--){
-    cin>>n>>m;
-    as=n*m;
-    avg=0;
-    op=0;
-    rep(i,0,as){
-      cin>>a[i];
-      avg+=a[i]/(double)as;
+void solve() {
+  int n, m;
+  cin >> n >> m;
+  vector<vector<ll>> a(n, vector<ll>(m));
+  rep(i, 0, n - 1) rep(j, 0, m - 1) cin >> a[i][j];
+
+  ll ans = 0;
+  rep(i, 0, (n - 1) / 2) {
+    rep(j, 0, (m - 1) / 2) {
+      vector<ll> v{a[i][j]};
+      if (n - i - 1 != i) {
+        v.pb(a[n - i - 1][j]);
+      }
+      if (m - j - 1 != j) {
+        v.pb(a[i][m - j - 1]);
+      }
+      if (n - i - 1 != i && m - j - 1 != j) {
+        v.pb(a[n - i - 1][m - j - 1]);
+      }
+      sort(all(v));
+      ret(it, v) ans += abs(v[len(v) / 2] - it);
     }
-    iavg=round(avg);
-    cout<<"avg="<<avg<<" iavg="<<iavg<<" as="<<as<<endl;
-    rep(i,0,as){
-      op+=abs(iavg-a[i]);
-    }
-    cout<<op<<endl;
   }
+
+  cout << ans << endl;
+}
+
+int main() {
+  fastio;
+  int t;
+  cin >> t;
+  rep(i, 1, t) solve();
   return 0;
 }
